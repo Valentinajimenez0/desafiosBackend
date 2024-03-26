@@ -1,7 +1,9 @@
 class ProductManager {
+
     constructor(){
      this.products = [];   
     }
+
     addProduct(title, description, price, thumbnail,code, stock){
         const id = this.products.length + 1;
         if (!this.products.some(product => product.code === code) && title && description && price && thumbnail && code && stock ) {
@@ -14,14 +16,17 @@ class ProductManager {
             code,
             stock
         }
+
         this.products.push(producto);
         }else{
             console.log ("el producto no es valido o el codigo se repite")
         }
     }
+
     getProducts (){
-        return this.products
+        return this.products.length > 0 ? this.products : [];
     }
+
     getProductById (id){
      const productoEncontrado = this.products.find((prod) => prod.id === id)
      if (!productoEncontrado){
@@ -34,9 +39,12 @@ class ProductManager {
 
 const productManager = new ProductManager();
 
+
 // Agregar productos
-productManager.addProduct("Cafetera", "Cafetera con capacidad de 12 tazas",300, "/imgs/cafetera.jpg", "CAF123", 15);
-productManager.addProduct("Tostadora", "Tostadora eléctrica de acero inoxidable", 800, "/imgs/tostadora.jpg", "TST456", 20);
+ productManager.addProduct("Cafetera", "Cafetera con capacidad de 12 tazas",300, "/imgs/cafetera.jpg", "CAF123", 15);
+ productManager.addProduct("Tostadora", "Tostadora eléctrica de acero inoxidable", 500, "/imgs/tostadora.jpg", "TST456", 20);
+ productManager.addProduct("waflera", "waflera eléctrica de acero inoxidable", 500, "/imgs/waflera.jpg", "TST458", 20);
+ productManager.addProduct("microondas", "microondas eléctrica de acero inoxidable", 800, "/imgs/microondas.jpg", "TSTf456", 20);
 
 // Obtener todos los productos
 console.log("Todos los productos:", productManager.getProducts());
